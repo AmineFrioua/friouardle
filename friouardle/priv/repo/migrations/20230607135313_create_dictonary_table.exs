@@ -8,6 +8,5 @@ defmodule Friouardle.Repo.Migrations.CreateDictonaryTable do
       add :word_letters, {:array, :char}
       add :type, :string
     end
-
   end
 end

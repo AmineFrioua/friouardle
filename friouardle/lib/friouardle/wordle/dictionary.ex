@@ -1,10 +1,11 @@
-defmodule Friouadle.Dictionary do
+defmodule Friouardle.Wordle.Dictionary do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "dictionary" do
     field :word, :string
     field :word_length, :integer
-    field :word_letters, {:array, :char}
+    field :word_letters, {:array, :string}
     field :type, :string
 
     timestamps()

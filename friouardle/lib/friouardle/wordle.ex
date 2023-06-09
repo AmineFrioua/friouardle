@@ -1,11 +1,12 @@
 defmodule Friouardle.Wordle do
   alias Friouardle.Repo
-  alias Friouardle.Dictionary
+  alias Friouardle.Wordle.Dictionary
+  import Ecto.Query, warn: false
 
-   def get_random_word(type \\ "english", size \\ 5) do
+  def get_random_word(type \\ "english", size \\ 5) do
     query =
       from d in Dictionary,
-        where: fragment("length(?) = ?", d.word, ^size),
+        where: d.word_length == ^size,
         where: d.type == ^type,
         select: d.word
 
