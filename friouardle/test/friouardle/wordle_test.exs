@@ -42,11 +42,10 @@ defmodule Friouardle.Wordle_test do
     test "delete_dictionary/1, delete dectionary correctly" do
       word = insert!(:dictionary)
 
-      {:ok , deleted_entry} = Wordle.delete_dictionary(word)
+      {:ok, deleted_entry} = Wordle.delete_dictionary(word)
 
       assert deleted_entry.id == word.id
     end
-
 
     test "get_random_world/2, get  word with type and size" do
       word = insert!(:dictionary)
@@ -70,6 +69,23 @@ defmodule Friouardle.Wordle_test do
       assert word.word == Wordle.get_random_word()
       assert nil == Wordle.get_random_word("arabic")
       assert naruto_manga.word == Wordle.get_random_word("manga", 6)
+    end
+  end
+
+  describe "main functions test" do
+    test "guess/2" do
+      correct_word = ["a", "p", "p", "l", "e"]
+      guess_word = ["a", "m", "i", "n", "e"]
+      guess_word_2 = ["p", "l", "e", "a", "d"]
+
+      assert [{"a", :green}, {"m", :red}, {"i", :red}, {"n", :red}, {"e", :green}] ==
+               Wordle.guess(guess_word, correct_word)
+
+      assert [{"a", :green}, {"p", :green}, {"p", :green}, {"l", :green}, {"e", :green}] ==
+               Wordle.guess(correct_word, correct_word)
+
+      assert [{"p", :yellow}, {"l", :yellow}, {"e", :yellow}, {"a", :yellow}, {"d", :red}] ==
+               Wordle.guess(guess_word_2, correct_word)
     end
   end
 end
