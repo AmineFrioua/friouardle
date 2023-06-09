@@ -1,11 +1,11 @@
 defmodule Friouardle.Factory do
   alias Friouardle.Repo
 
-  def build(:dictonary) do
-    %Friouardle.Wordle.Dictonary{
+  def build(:dictionary) do
+    %Friouardle.Wordle.Dictionary{
       word: "apple",
-      world_length: 5,
-      word_letters: ['a', 'p', 'p', 'l', 'e'],
+      word_length: 5,
+      word_letters: ["a", "p", "p", "l", "e"],
       type: "english"
     }
   end

@@ -19,24 +19,16 @@ defmodule Friouardle.DataCase do
   using do
     quote do
       alias Friouardle.Repo
-
       import Ecto
-      import Ecto.Changeset
-      import Ecto.Query
+      import Ecto.{Changeset, Query}
       import Friouardle.DataCase
+      import Friouardle.Factory
     end
   end
 
   setup tags do
-    Friouardle.DataCase.setup_sandbox(tags)
-    :ok
-  end
-
-  @doc """
-  Sets up the sandbox based on the test tags.
-  """
-  def setup_sandbox(tags) do
     pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Friouardle.Repo, shared: not tags[:async])
+
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
   end
 

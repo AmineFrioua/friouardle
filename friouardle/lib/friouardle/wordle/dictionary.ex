@@ -7,8 +7,6 @@ defmodule Friouardle.Wordle.Dictionary do
     field :word_length, :integer
     field :word_letters, {:array, :string}
     field :type, :string
-
-    timestamps()
   end
 
   def changeset(dict, params \\ %{}) do
