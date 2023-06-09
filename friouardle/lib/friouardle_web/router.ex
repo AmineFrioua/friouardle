@@ -17,7 +17,7 @@ defmodule FriouardleWeb.Router do
   scope "/", FriouardleWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", GameSession
   end
 
   # Other scopes may use custom stacks.
