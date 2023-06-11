@@ -8,6 +8,5 @@ defmodule Friouardle.Repo.Migrations.CreateWordsTable do
       add :word_letters, {:array, :string}
       add :type, :string
     end
-
   end
 end

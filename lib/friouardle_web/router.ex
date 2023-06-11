@@ -21,11 +21,6 @@ defmodule FriouardleWeb.Router do
     live "/game", GameSession
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", FriouardleWeb do
-  #   pipe_through :api
-  # end
-
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:friouardle, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put
