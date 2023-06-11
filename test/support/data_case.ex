@@ -24,6 +24,7 @@ defmodule Friouardle.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import Friouardle.DataCase
+      import Friouardle.Factory
     end
   end
 

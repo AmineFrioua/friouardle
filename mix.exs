@@ -45,6 +45,7 @@ defmodule Friouardle.MixProject do
       {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
       {:swoosh, "~> 1.3"},
       {:finch, "~> 0.13"},
+      {:dialyxir, "~> 0.5", only: [:dev], runtime: false} ,
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.20"},
