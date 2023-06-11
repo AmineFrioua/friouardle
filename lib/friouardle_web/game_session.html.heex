@@ -1,2 +1,4 @@
+<%= for {word, index} <- @array do %>
+  <.live_component module={FriouardleWeb.Components.Game.Board} word={word} id={"board-#{index}"} />
+<% end %>
 <.live_component module={FriouardleWeb.Components.Game.Keyboard} id="keyboard" />
-<h1 class="text-red-500 text-5xl font-bold text-center">Hello, Tailwind!</h1>

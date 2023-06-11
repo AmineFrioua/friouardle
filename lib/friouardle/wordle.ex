@@ -8,7 +8,7 @@ defmodule Friouardle.Wordle do
       from d in Words,
         where: d.word_length == ^size,
         where: d.type == ^type,
-        select: d.word
+        select: d.word_letters
 
     Repo.one(query)
   end
@@ -38,6 +38,15 @@ defmodule Friouardle.Wordle do
   end
 
   ## Main Wordle functions
+  def game_session(type \\ "english", size \\ 5) do
+    correct_word = get_random_word(type, size)
+
+    %{
+      correct_word: correct_word,
+      tries_allowed: length(correct_word),
+      number_of_tries: 0
+    }
+  end
 
   # we assume that we did our test so these 2 words have the same length so we will not worry about this
   # for now
