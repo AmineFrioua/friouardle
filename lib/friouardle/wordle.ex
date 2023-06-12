@@ -44,7 +44,8 @@ defmodule Friouardle.Wordle do
     %{
       correct_word: correct_word,
       tries_allowed: length(correct_word),
-      number_of_tries: 0
+      number_of_tries: 0,
+      number_of_letters: 0
     }
   end
 

@@ -1,4 +1,10 @@
-<%= for {word, index} <- @array do %>
-  <.live_component module={FriouardleWeb.Components.Game.Board} word={word} id={"board-#{index}"} />
-<% end %>
-<.live_component module={FriouardleWeb.Components.Game.Keyboard} id="keyboard" />
+<div class="game-holder text-center" phx-window-keyup="press_key" id="game-holder">
+  <%= for {word, index} <- Enum.with_index(@array, 1)do %>
+    <.live_component
+      module={FriouardleWeb.Components.Game.Board}
+      word={word}
+      id={"board-#{index}"}
+    />
+  <% end %>
+  <.live_component module={FriouardleWeb.Components.Game.Keyboard} id="keyboard" />
+</div>
