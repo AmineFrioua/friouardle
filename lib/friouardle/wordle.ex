@@ -1,6 +1,7 @@
 defmodule Friouardle.Wordle do
-  alias Friouardle.Repo
-  alias Friouardle.Wordle.Words
+  alias FriouardleWeb.Components.Game
+  alias Friouardle.{Wordle, Repo}
+  alias Friouardle.Wordle.{GameSession, Words}
   import Ecto.Query, warn: false
 
   def get_random_word(type \\ "english", size \\ 5) do
@@ -38,19 +39,19 @@ defmodule Friouardle.Wordle do
   end
 
   ## Main Wordle functions
+  @spec game_session(type :: String.t(), size :: pos_integer()) :: GameSession.t()
   def game_session(type \\ "english", size \\ 5) do
     correct_word = get_random_word(type, size)
 
-    %{
+    %GameSession{
       correct_word: correct_word,
       tries_allowed: length(correct_word),
       number_of_tries: 0,
-      number_of_letters: 0
+      number_of_letters: 0,
+      game_status: {:not_started, "Good Luck hope you guess it"}
     }
   end
 
-  # we assume that we did our test so these 2 words have the same length so we will not worry about this
-  # for now
   @spec guess(try_word :: [String.t()], correct_word :: [String.t()]) :: [
           {String.t(), String.t()}
         ]

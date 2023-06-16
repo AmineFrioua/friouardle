@@ -40,13 +40,12 @@ defmodule FriouardleWeb.GameSession do
   end
 
   def guess_or_not(game_session) do
-    IO.inspect(game_session)
     tries_allowed = game_session.tries_allowed
     number_of_letters = game_session.number_of_letters
     number_of_tries = game_session.number_of_tries
 
     result = if tries_allowed == number_of_letters, do: :guess, else: :continue
-    IO.inspect(result)
+
     if tries_allowed == number_of_tries, do: :finish, else: result
     result
   end
